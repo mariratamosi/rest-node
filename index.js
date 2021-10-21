@@ -21,6 +21,9 @@ app.use(bodyParser.json());
 
 routes(app);
 
+//serve static files
+app.use(express.static("public"));
+
 app.get("/", (req, res) => {
   res.send(`Hello server`);
 });

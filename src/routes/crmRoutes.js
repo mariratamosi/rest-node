@@ -1,5 +1,6 @@
 import {
   addNewContact,
+  deleteContactById,
   getContact,
   getContactById,
   updateContactById,
@@ -18,9 +19,7 @@ const routes = (app) => {
     .get(getContactById) //http://localhost:4000/contact/6171a0f67d230aa807090926
 
     .put(updateContactById)
-    .delete((req, res) => {
-      res.send("delete certain contacts");
-    });
+    .delete(deleteContactById);
 };
 
 export default routes;

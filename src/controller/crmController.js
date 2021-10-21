@@ -51,3 +51,15 @@ export const updateContactById = (req, res) => {
     }
   );
 };
+
+export const deleteContactById = (req, res) => {
+  let id = req.params.contactID;
+
+  //new true:: will send back the update
+  Contact.remove({ _id: id }, (err, contact) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json({ status: true });
+  });
+};
