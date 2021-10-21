@@ -1,26 +1,23 @@
-import { addNewContact } from "../controller/crmController";
+import {
+  addNewContact,
+  getContact,
+  getContactById,
+  updateContactById,
+} from "../controller/crmController";
 
 const routes = (app) => {
   app
     .route("/contact")
-    .get(
-      (req, res, next) => {
-        //middleware //might be thirdparty
-        console.log(`Request from ${req.originalUrl}`);
-        console.log(`Request type ${req.method}`);
-        next();
-      },
-      (req, res, next) => {
-        res.send("Get the contacts");
-      }
-    )
+    .get(getContact)
+
     .post(addNewContact);
 
   app
     .route("/contact/:contactID")
-    .put((req, res) => {
-      res.send("put certain contacts");
-    })
+
+    .get(getContactById) //http://localhost:4000/contact/6171a0f67d230aa807090926
+
+    .put(updateContactById)
     .delete((req, res) => {
       res.send("delete certain contacts");
     });
